@@ -13,7 +13,7 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   TextEditingController mail = TextEditingController();
   TextEditingController password = TextEditingController();
   String? mailError = null;
