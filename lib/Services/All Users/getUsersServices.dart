@@ -16,6 +16,9 @@ class getUsersServices {
       if (response.statusCode == 200) {
         return jsonDecode(response.body.toString())['data'];
       }
-    } catch (e) {}
+      return;
+    } catch (e) {
+      return;
+    }
   }
 }

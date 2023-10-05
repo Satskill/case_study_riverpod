@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:case_study_riverpod/Routes/route.dart';
-import 'package:case_study_riverpod/Widgets/login.dart';
+import 'package:case_study_riverpod/Widgets/Login/login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -17,7 +18,7 @@ void main() async {
 
   await Hive.openBox('Profile');
 
-  runApp(MainApp());
+  runApp(ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {

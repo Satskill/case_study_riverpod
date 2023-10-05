@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 
 class authLocalService {
-  ProfileInsertDB(String token) async {
+  ProfileInsertDB(Map token) async {
     final collection = Hive.box('Profile');
     await collection.put('token', token);
   }

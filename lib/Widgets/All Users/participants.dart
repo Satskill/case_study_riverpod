@@ -1,8 +1,10 @@
-import 'package:case_study_riverpod/Services/authLocalService.dart';
-import 'package:case_study_riverpod/Services/getUsersServices.dart';
-import 'package:case_study_riverpod/Widgets/login.dart';
+import 'package:case_study_riverpod/Services/Auth%20Local/authLocalService.dart';
+import 'package:case_study_riverpod/Services/All%20Users/getUsersServices.dart';
+import 'package:case_study_riverpod/Widgets/Login/login.dart';
+import 'package:case_study_riverpod/Widgets/RiverPod/riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod/riverpod.dart';
 
 class Participants extends StatefulWidget {
@@ -27,11 +29,11 @@ class _ParticipantsState extends State<Participants> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(emailProvider.name.toString()),
+              RiverPod(),
               MaterialButton(
                 onPressed: () async {
                   await authLocalService().ProfileDeleteDB();
-                  Navigator.popUntil(context, (route) => route.isFirst);
+                  Navigator.pushReplacementNamed(context, '/Login');
                 },
                 color: Colors.transparent,
                 height: 50,
@@ -45,6 +47,7 @@ class _ParticipantsState extends State<Participants> {
           ),
         ),
       ),
+      // kişileri çekip tek tek ayrı profil görünümü
       body: FutureBuilder(
         future: getUsersServices().getUsers(),
         builder: (context, AsyncSnapshot snapshot) {
